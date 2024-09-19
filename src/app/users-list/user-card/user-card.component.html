@@ -1,0 +1,11 @@
+<div class="card users-card">
+  <div class="card-body users-card-body">
+    Name: {{ user.name }}<br>
+    Email: {{ user.email }}<br>
+    Company: {{ user.company.name }}
+  </div>
+  <div class="card-footer users-card-footer">
+    <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+  </div>
+</div>
+
