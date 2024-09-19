@@ -10,8 +10,8 @@ import {TodoService} from "../../services/todoService/todo.service";
   styleUrls: ['./todo-card.component.scss']
 })
 export class TodoCardComponent implements OnInit {
-  @Input()
-  todo: ITodo | any;
+  @Input() todo: ITodo | any;
+  @Output() deleteTodo = new EventEmitter();
 
   userName: string = 'Unknown';
 
@@ -28,7 +28,7 @@ export class TodoCardComponent implements OnInit {
     }
   }
 
-  deleteTodo(id: number) {
-    this._todoService.deleteTodo(id);
+  onDeleteTodo(id: number) {
+    this.deleteTodo.emit(id);
   }
 }

@@ -26,5 +26,8 @@ export class TodoListComponent {
     this._usersService.loadUsers();
   }
 
+  deleteTodo(id: number) {
+    this._todoService.deleteTodo(id);
+  }
 
 }
