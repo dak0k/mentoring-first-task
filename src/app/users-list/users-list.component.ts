@@ -1,22 +1,26 @@
-import { Component } from '@angular/core';
-import {UsersApiService} from "../services/usersApiService/users-api.service";
+import {Component, OnInit} from '@angular/core';
 import {IUser} from "../interfaces/iuser";
-import {NgFor} from "@angular/common";
-import {UserCardComponent} from "../user-card/user-card.component";
+import {AsyncPipe, NgFor} from "@angular/common";
+import {UserCardComponent} from "./user-card/user-card.component";
+import {UsersService} from "../services/usersService/users.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'users-list',
   standalone: true,
   imports: [
     NgFor,
-    UserCardComponent
+    UserCardComponent,
+    AsyncPipe
   ],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss'
 })
-export class UsersListComponent {
+export class UsersListComponent implements OnInit {
+  public readonly users$: Observable<IUser[]> = this._userService.users$;
+  constructor(private _userService: UsersService) {}
 
-
-  constructor(private _usersApiService: UsersApiService) {}
-
+  ngOnInit(): void {
+    this._userService.loadUsers();
+  }
 }

@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {UsersApiService} from "../usersApiService/users-api.service";
 import {IUser} from "../../interfaces/iuser";
+
 interface IUserService {
   loadUsers(): void;
   deleteUser(id: number): void;
 }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,6 +23,7 @@ export class UsersService implements IUserService {
       }
     );
   }
+
   deleteUser(id: number): void {
     this.usersObject$.next(this.usersObject$.value.filter(user => user.id !== id));
   }
