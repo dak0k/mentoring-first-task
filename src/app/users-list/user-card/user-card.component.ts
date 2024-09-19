@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IUser } from '../../interfaces/iuser';
-import { UsersService } from '../../services/usersService/users.service';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -11,12 +10,11 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./user-card.component.scss']
 })
 export class UserCardComponent {
-  @Input() user: IUser|any;
+  @Input()
+  user: IUser | any;
+  @Output() deleteUser = new EventEmitter();
 
-  constructor(private _userService: UsersService) {}
-
-  deleteUser(id: number) {
-    this._userService.deleteUser(id);
+  onDeleteUser(id: any): void {
+    this.deleteUser.emit(id);
   }
-
 }

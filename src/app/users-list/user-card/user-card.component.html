@@ -5,7 +5,7 @@
     Company: {{ user.company.name }}
   </div>
   <div class="card-footer users-card-footer">
-    <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+    <button type="button" class="btn btn-danger" (click)=onDeleteUser(user.id)>Delete</button>
   </div>
 </div>
 
