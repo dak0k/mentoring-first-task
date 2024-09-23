@@ -1,20 +1,25 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IUser } from '../../interfaces/iuser';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'user-card',
   standalone: true,
-  imports: [NgIf],
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.scss']
 })
 export class UserCardComponent {
-  @Input()
-  user: IUser | any;
-  @Output() deleteUser = new EventEmitter();
+  @Input() user: IUser | null = null;
 
-  onDeleteUser(id: any): void {
+  @Output() deleteUser = new EventEmitter<number>();
+  @Output() editUser = new EventEmitter<IUser>();
+
+  onDeleteUser(id: number | undefined): void {
     this.deleteUser.emit(id);
+  }
+
+  onEditUser(): void {
+    if (this.user) {
+      this.editUser.emit(this.user);
+    }
   }
 }
