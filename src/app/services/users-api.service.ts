@@ -1,8 +1,8 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {IUser} from "../../interfaces/iuser";
+import {IUser} from "../interfaces/iuser";
 import {Observable} from "rxjs";
-import {LocalStorageService} from "../local-storage.service";
+import {LocalStorageService} from "./local-storage.service";
 
 interface IUsersApiService {
   getUsers(): Observable<IUser[]>;

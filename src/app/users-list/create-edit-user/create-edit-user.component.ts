@@ -11,7 +11,7 @@ import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatButton} from "@angular/material/button";
 import {NgIf} from "@angular/common";
 import {MatInput} from "@angular/material/input";
-import {UsersService} from "../../services/usersService/users.service";
+import {UsersService} from "../../services/users.service";
 import {IUser} from "../../interfaces/iuser";
 import { v4 as uuidv4 } from 'uuid';
 @Component({

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { IUser } from '../interfaces/iuser';
-import { UsersService } from '../services/usersService/users.service';
+import { UsersService } from '../services/users.service';
 import { Observable } from 'rxjs';
 import { CreateEditUserComponent } from './create-edit-user/create-edit-user.component';
 import { MatDialog } from '@angular/material/dialog';

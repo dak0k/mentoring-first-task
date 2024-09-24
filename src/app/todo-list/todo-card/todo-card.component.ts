@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { ITodo } from "../../interfaces/itodo";
-import { UsersService } from "../../services/usersService/users.service";
-import {TodoService} from "../../services/todoService/todo.service";
+import { UsersService } from "../../services/users.service";
+import {TodoService} from "../../services/todo.service";
 
 @Component({
   selector: 'todo-card',

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import {Observable} from "rxjs";
 import {ITodo} from "../interfaces/itodo";
-import {TodoService} from "../services/todoService/todo.service";
+import {TodoService} from "../services/todo.service";
 import {TodoCardComponent} from "./todo-card/todo-card.component";
 import {AsyncPipe, NgFor} from "@angular/common";
-import {UsersService} from "../services/usersService/users.service";
+import {UsersService} from "../services/users.service";
 
 @Component({
   selector: 'todo-list',

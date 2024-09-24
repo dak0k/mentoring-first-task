@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
-import { UsersApiService } from "../usersApiService/users-api.service";
-import { IUser } from "../../interfaces/iuser";
-import { LocalStorageService } from "../local-storage.service";
+import { UsersApiService } from "./users-api.service";
+import { IUser } from "../interfaces/iuser";
+import { LocalStorageService } from "./local-storage.service";
 
 @Injectable({
   providedIn: 'root'

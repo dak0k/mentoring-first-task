@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ITodo} from "../../interfaces/itodo";
+import {ITodo} from "../interfaces/itodo";
 
 interface ITodoApi{
   getTodos(): Observable<ITodo[]>;
