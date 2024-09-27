@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {TodoApiService} from "../todoApiService/todo-api.service";
+import {TodoApiService} from "./todo-api.service";
 import {BehaviorSubject} from "rxjs";
-import {ITodo} from "../../interfaces/itodo";
+import {ITodo} from "../interfaces/itodo";
 
 interface ITodoService{
   loadTodos(): void;
