@@ -14,6 +14,8 @@ import {MatInput} from "@angular/material/input";
 import {UsersService} from "../../services/users.service";
 import {IUser} from "../../interfaces/iuser";
 import { v4 as uuidv4 } from 'uuid';
+import {Store} from "@ngrx/store";
+import {addUser, updateUser} from "../ngrx/users.actions";
 @Component({
   selector: 'create-edit-user',
   templateUrl: './create-edit-user.component.html',
@@ -39,7 +41,7 @@ export class CreateEditUserComponent {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CreateEditUserComponent>,
-    private usersService: UsersService,
+    private store: Store,
     @Inject(MAT_DIALOG_DATA) public data: { user: IUser; isEdit: boolean }
   ) {
     this.createEditForm = this.fb.group({
@@ -57,15 +59,16 @@ export class CreateEditUserComponent {
 
       if (this.data.isEdit && this.data.user.id) {
         user.id = this.data.user.id;
-        this.usersService.updateUser(user);
+        this.store.dispatch(updateUser({ user }));
       } else {
         user.id = uuidv4();
-        this.usersService.addUser(user);
+        this.store.dispatch(addUser({ user }));
       }
 
-      this.dialogRef.close();
+      this.dialogRef.close({ user, isEdit: this.data.isEdit });
     }
   }
+
 
 
 }

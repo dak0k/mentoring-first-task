@@ -27,7 +27,7 @@ export class UsersEffects {
       ofType(addUser),
       mergeMap(({ user }) =>
         this.usersService.addUser(user).pipe(
-          map(() => loadUsers()), // Reload users after adding a new user
+          map(() => loadUsers()),
           catchError((error) => of(loadUsersFailure({ error })))
         )
       )
@@ -39,7 +39,7 @@ export class UsersEffects {
       ofType(updateUser),
       mergeMap(({ user }) =>
         this.usersService.updateUser(user).pipe(
-          map(() => loadUsers()), // Reload users after updating
+          map(() => loadUsers()),
           catchError((error) => of(loadUsersFailure({ error })))
         )
       )
@@ -51,7 +51,7 @@ export class UsersEffects {
       ofType(deleteUser),
       mergeMap(({ id }) =>
         this.usersService.deleteUser(id).pipe(
-          map(() => loadUsers()), // Reload users after deleting
+          map(() => loadUsers()),
           catchError((error) => of(loadUsersFailure({ error })))
         )
       )

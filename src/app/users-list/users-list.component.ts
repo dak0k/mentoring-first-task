@@ -32,15 +32,14 @@ export class UsersListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        if (result.isEdit) {
-          this.store.dispatch(updateUser({ user: result.user }));
-        } else {
-          this.store.dispatch(addUser({ user: result.user }));
-        }
+      if (result && result.isEdit) {
+        console.log('User edit completed');
+      } else if (result) {
+        console.log('User creation completed');
       }
     });
   }
+
 
   deleteUser(id: number): void {
     this.store.dispatch(deleteUser({ id }));

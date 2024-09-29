@@ -15,7 +15,7 @@ export class TodoEffects {
       mergeMap(() =>
         this.todoService.loadTodos().pipe(
           map((todos: ITodo[]) => loadTodosSuccess({ todos })),
-          catchError((error) => of(loadTodosFailure({ error }))) // Wrap error in `of` to return a new observable
+          catchError((error) => of(loadTodosFailure({ error })))
         )
       )
     )

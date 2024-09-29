@@ -22,8 +22,9 @@ export const usersReducer = createReducer(
   on(addUser, (state, { user }) => ({ ...state, users: [...state.users, user] })),
   on(updateUser, (state, { user }) => ({
     ...state,
-    users: state.users.map((u) => (u.id === user.id ? user : u)),
+    users: state.users.map((u) => (u.id === user.id ? { ...u, ...user } : u)),
   })),
+
   on(deleteUser, (state, { id }) => ({
     ...state,
     users: state.users.filter((u) => u.id !== id),

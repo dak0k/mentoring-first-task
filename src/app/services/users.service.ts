@@ -40,16 +40,16 @@ export class UsersService {
   }
 
   updateUser(user: IUser): Observable<void> {
-    const users = this.usersObject$.value;
-    const index = users.findIndex(u => u.id === user.id);
+    const users = this.usersObject$.value.map(u =>
+      u.id === user.id ? { ...u, ...user } : u
+    );
 
-    if (index !== -1) {
-      users[index] = { ...users[index], ...user };
-      this._localStorageService.updateObject(this.localStorageKey, users[index]);
-      this.usersObject$.next(users);
-    }
+    this._localStorageService.updateObject(this.localStorageKey, user);
+    this.usersObject$.next(users);
+
     return of(void 0);
   }
+
 
   deleteUser(id: number): Observable<void> {
     this._localStorageService.deleteObject(this.localStorageKey, id);
