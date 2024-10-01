@@ -1,31 +1,29 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { IUser } from '../interfaces/iuser';
-import { UsersService } from '../services/users.service';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CreateEditUserComponent } from './create-edit-user/create-edit-user.component';
+import { IUser } from '../interfaces/iuser';
 import { MatDialog } from '@angular/material/dialog';
-import {AsyncPipe, NgFor} from "@angular/common";
-import {UserCardComponent} from "./user-card/user-card.component";
+import { AsyncPipe, NgFor } from '@angular/common';
+import { UserCardComponent } from './user-card/user-card.component';
+import { loadUsers, addUser, updateUser, deleteUser } from '../states/users/users.actions';
+import { CreateEditUserComponent } from './create-edit-user/create-edit-user.component';
+import { selectUsers } from '../states/users/users.selectors';
 
 @Component({
   selector: 'users-list',
   standalone: true,
   templateUrl: './users-list.component.html',
-  imports: [
-    AsyncPipe,
-    UserCardComponent,
-    NgFor
-  ],
-  styleUrls: ['./users-list.component.scss']
+  imports: [AsyncPipe, UserCardComponent, NgFor],
+  styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit {
-  public readonly users$: Observable<IUser[]> = this._userService.users$;
+  public readonly users$: Observable<IUser[]> = this.store.select(selectUsers);
   readonly dialog = inject(MatDialog);
 
-  constructor(private _userService: UsersService) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this._userService.loadUsers();
+    this.store.dispatch(loadUsers());
   }
 
   openDialog(user: IUser | null = null): void {
@@ -34,17 +32,16 @@ export class UsersListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        if (result.isEdit) {
-          this._userService.updateUser(result.user);
-        } else {
-          this._userService.addUser(result.user);
-        }
+      if (result && result.isEdit) {
+        console.log('User edit completed');
+      } else if (result) {
+        console.log('User creation completed');
       }
     });
   }
 
+
   deleteUser(id: number): void {
-    this._userService.deleteUser(id);
+    this.store.dispatch(deleteUser({ id }));
   }
 }
