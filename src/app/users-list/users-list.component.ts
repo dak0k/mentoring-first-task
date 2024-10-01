@@ -5,9 +5,9 @@ import { IUser } from '../interfaces/iuser';
 import { MatDialog } from '@angular/material/dialog';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { UserCardComponent } from './user-card/user-card.component';
-import { loadUsers, addUser, updateUser, deleteUser } from './ngrx/users.actions';
+import { loadUsers, addUser, updateUser, deleteUser } from '../states/users/users.actions';
 import { CreateEditUserComponent } from './create-edit-user/create-edit-user.component';
-import { selectUsers } from './ngrx/users.selectors';
+import { selectUsers } from '../states/users/users.selectors';
 
 @Component({
   selector: 'users-list',

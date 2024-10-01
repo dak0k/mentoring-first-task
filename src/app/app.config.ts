@@ -4,11 +4,11 @@ import { provideHttpClient } from "@angular/common/http";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import { usersReducer } from './users-list/ngrx/users.reducer';
-import { UsersEffects } from './users-list/ngrx/users.effects';
+import { usersReducer } from './states/users/users.reducer';
+import { UsersEffects } from './states/users/users.effects';
 import { routes } from './app.routes';
-import {todosReducer} from "./todo-list/ngrx/todos.reducer";
-import {TodoEffects} from "./todo-list/ngrx/todos.effects";
+import {todosReducer} from "./states/todos/todos.reducer";
+import {TodoEffects} from "./states/todos/todos.effects";
 
 export const appConfig: ApplicationConfig = {
   providers: [

@@ -15,7 +15,7 @@ import {UsersService} from "../../services/users.service";
 import {IUser} from "../../interfaces/iuser";
 import { v4 as uuidv4 } from 'uuid';
 import {Store} from "@ngrx/store";
-import {addUser, updateUser} from "../ngrx/users.actions";
+import {addUser, updateUser} from "../../states/users/users.actions";
 @Component({
   selector: 'create-edit-user',
   templateUrl: './create-edit-user.component.html',

@@ -5,9 +5,9 @@ import {TodoService} from "../services/todo.service";
 import {TodoCardComponent} from "./todo-card/todo-card.component";
 import {AsyncPipe, NgFor} from "@angular/common";
 import {UsersService} from "../services/users.service";
-import {selectTodos} from "./ngrx/todos.selectors";
+import {selectTodos} from "../states/todos/todos.selectors";
 import {Store} from "@ngrx/store";
-import {deleteTodo, loadTodos} from "./ngrx/todos.actions";
+import {deleteTodo, loadTodos} from "../states/todos/todos.actions";
 
 @Component({
   selector: 'todo-list',
